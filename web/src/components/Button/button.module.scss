@@ -1,0 +1,21 @@
+@import 'styles/theme.scss';
+
+button {
+  height: 2.25rem;
+  font-size: 0.75rem !important;
+  border: 0.063rem solid transparent;
+  border-radius: 0.125rem;
+  cursor: pointer;
+  transition: .3s all ease-out;
+  outline: none;
+  background-color: $background-primary;
+
+
+  &:not(:placeholder-shown) {
+    border-color: transparent;
+  }
+
+  &:hover {
+    border-color: $brand-accent;
+  }
+}

@@ -1,0 +1,33 @@
+@import 'styles/theme.scss';
+
+.container {
+  height: 100%;
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  background-color: $background-tertiary;
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .form_input_grouper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    font-size: 0.625rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .observation {
+    font-size: 0.5rem;
+    text-align: end;
+    color: $content-tertiary
+  }
+}

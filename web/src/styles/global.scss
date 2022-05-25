@@ -1,0 +1,17 @@
+@import './theme.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: $background-primary;
+}
+
+input, textarea, label, button, h1, h2, h3, h4, h5, h6, p, span, a {
+  font: $inter_regular;
+  color: $content-primary
+}

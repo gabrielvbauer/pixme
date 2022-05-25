@@ -1,0 +1,30 @@
+@import 'styles/theme.scss';
+
+.container {
+  padding: 1.75rem;
+  border-radius: 0.5rem;
+  max-width: 480px;
+  background-color: $background-secondary;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    h2 {
+      font: $inter_medium;
+      font-size: 1.125rem;
+    }
+
+    .icon {
+      color: $content-primary;
+      cursor: pointer;
+      transition: .3s ease-out;
+
+      &:hover {
+        color: $brand-accent
+      }
+    }
+  }
+}
