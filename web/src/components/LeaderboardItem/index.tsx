@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ChatCircleText } from 'phosphor-react';
 
 import style from './leaderboarditem.module.scss';
@@ -11,8 +10,6 @@ export type LeaderboardItemProps = {
 }
 
 function LeaderboardItem({ userName, picture, value, message }: LeaderboardItemProps) {
-  const [showMessage, setShowMessage] = useState(false);
-
   return (
     <div className={style.container}>
       <img 
@@ -29,7 +26,6 @@ function LeaderboardItem({ userName, picture, value, message }: LeaderboardItemP
             <ChatCircleText
               size={22}
               className={`${style.messageIcon}`}
-              onClick={() => setShowMessage(!showMessage)}
             />
             <div 
               className={style.message}

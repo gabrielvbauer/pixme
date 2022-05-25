@@ -1,0 +1,30 @@
+@import 'styles/theme.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 2.28rem;
+
+  .githubLogo {
+    color: $content-tertiary;
+    margin-right: 0.5rem;
+    transition: all .3s ease-out;
+  }
+  
+  a {
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem;
+    text-decoration: none;
+    color: $content-tertiary;
+    cursor: pointer;
+    transition: all .3s ease-out;
+
+    &:hover {
+      .githubLogo {
+        color: $brand-accent
+      }
+    }
+  }
+}

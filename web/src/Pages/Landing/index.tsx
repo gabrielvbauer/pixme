@@ -1,3 +1,4 @@
+import { Footer } from 'components/Footer';
 import { Leaderboard } from 'components/Leaderboard';
 import { QRCodeForm } from 'components/QRCodeForm';
 import { QRCode } from '../../components/QRCode';
@@ -13,6 +14,7 @@ function Landing() {
       <section className={style.leaderboard_wrapper}>
         <Leaderboard />
       </section>
+      <Footer />
     </main>
   )
 }

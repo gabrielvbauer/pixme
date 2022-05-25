@@ -7,6 +7,7 @@
   grid-template-columns: auto 4fr auto 1.5fr;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   .image {
     width: 2.5rem;
@@ -21,7 +22,6 @@
   }
   
   .messageWrapper {
-    position: relative;
 
     .messageIcon {
       width: 100%;
@@ -33,15 +33,15 @@
           opacity: 1;
           visibility: visible;
           z-index: 2;
-          top: 100%;
+          top: 80%;
         }
       }
     }
 
     .message {
       position: absolute;
-      width: 300px;
       opacity: 0;
+      max-width: 21.875rem;
       top: 60%;
       visibility: hidden;
       border-radius: 0.25rem;
