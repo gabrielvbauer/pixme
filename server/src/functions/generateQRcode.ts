@@ -1,7 +1,8 @@
 /* eslint-disable no-octal */
 import { Merchant } from 'steplix-emv-qrcps';
+import { toDataURL } from 'qrcode';
 
-async function generateQRCode() {
+async function generateQRCode(value: string = '10.0') {
   const emvqr = generateEMVQR();
   const accountInformation = generateAccountInformation();
   const additionalDataFieldTemplate = generateAdditionalFieldTemplate();
@@ -9,9 +10,12 @@ async function generateQRCode() {
   emvqr.addMerchantAccountInformation(process.env.MERCHANT_ACCOUNT_INFORMATION_CODE, accountInformation);
   emvqr.setAdditionalDataFieldTemplate(additionalDataFieldTemplate);
 
-  const payload = generatePayload(emvqr);
+  emvqr.setTransactionAmount(value);
 
-  return payload;
+  const payload = generatePayload(emvqr);
+  const qrcodeURL = toDataURL(payload);
+
+  return qrcodeURL;
 }
 
 function generateEMVQR() {

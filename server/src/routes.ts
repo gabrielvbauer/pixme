@@ -6,6 +6,6 @@ const generateQRCodeController = new GenerateQRCodeController();
 
 const router = Router();
 
-router.get('/new', generateQRCodeController.handle)
+router.post('/new', generateQRCodeController.handle)
 
 export { router };

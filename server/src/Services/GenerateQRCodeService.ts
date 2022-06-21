@@ -1,14 +1,14 @@
 import { generateQRCode } from '../functions/generateQRcode';
 
-// interface IGenerateQRCodeProps {
-//   name: string;
-//   value: string;
-//   message?: string;
-// }
-
 class GenerateQRCodeService {
-  async execute() {
-    const qrCode = await generateQRCode();
+  async execute(value: string) {
+    if (value) {
+      value = value.replace(',','.')
+    }
+
+    console.log(value)
+
+    const qrCode = await generateQRCode(value);
 
     return qrCode;
   }
