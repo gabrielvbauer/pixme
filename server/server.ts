@@ -1,11 +1,11 @@
+import 'dotenv/config';
 import express from 'express';
+import { router } from './src/routes';
 
 const app = express();
+app.use(express.json())
+app.use(router);
 
-app.get('/new', (req, res) => {
-  res.send('new qrcode')
-})
-
-app.listen('8080', () => {
-  console.log('server running in port 8080 || Current time: ' + new Date().toISOString());
+app.listen(process.env.PORT || 8081, () => {
+  console.log(`server running in port ${process.env.PORT || 8081} || Current time: ` + new Date().toISOString());
 })
