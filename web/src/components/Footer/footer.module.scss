@@ -22,6 +22,7 @@
     transition: all .3s ease-out;
 
     &:hover {
+      &,
       .githubLogo {
         color: $brand-accent
       }

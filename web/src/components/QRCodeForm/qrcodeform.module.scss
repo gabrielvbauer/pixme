@@ -12,17 +12,45 @@
   .inputs {
     display: flex;
     flex-direction: column;
-    gap: 0.875rem;
+    gap: 1.5rem;
   }
 
   .form_input_grouper {
     display: flex;
     flex-direction: column;
-  }
+    position: relative;
 
-  label {
-    font-size: 0.625rem;
-    margin-bottom: 0.25rem;
+    input,
+    textarea {
+      &:focus,
+      &:active,
+      &:not(:placeholder-shown) {
+        & {
+          &::placeholder {
+            opacity: 1;
+            transition-delay: .20s;
+          }
+          &:-ms-input-placeholder {
+            opacity: 1;
+          }
+          &::-webkit-input-placeholder {
+            opacity: 1;
+          }
+        }
+
+        ~label {
+          transform: translate(0, -0.9rem) scale(0.9);
+        }
+      }
+    }
+
+    label {
+      font-size: 0.625rem;
+      position: absolute;
+      transform-origin: left;
+      transform: translate(0.75rem, 0.6rem);
+      transition: .425s transform $animation-ease-out;
+    }
   }
 
   .observation {
