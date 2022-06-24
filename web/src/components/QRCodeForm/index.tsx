@@ -4,6 +4,8 @@ import { Textarea } from 'components/Textarea';
 
 import style from './qrcodeform.module.scss';
 import { api } from 'api/api';
+import { Loading } from 'components/Loading';
+import { formatValue } from 'Utils/functions';
 
 type Props = {
   handleQRCodeUrl: (url: string) => void;
@@ -13,35 +15,30 @@ function QRCodeForm({ handleQRCodeUrl }: Props) {
   const [name, setName] = useState('');
   const [value, setValue] = useState('');
   const [message, setMessage] = useState('');
+  const [isSendingRequest, setIsSendingRequest] = useState(false);
 
   function handleValue(val: string) {
-    let value = val.replace(/\D/g, '');
-    value = value.replace(/(\d)(\d{2})$/, "$1,$2");
-    value = value.replace(/(?=(\d{3})+(\D))\B/g, ".");
+    let value = formatValue(val);
 
     setValue(value)
   }
 
-  function handleOnSubmit(event: FormEvent) {
+  async function handleOnSubmit(event: FormEvent) {
     event.preventDefault();
 
-    console.log(
-      {
-        name,
-        value,
-        message
-      }
-    )
-
-    api.post('/new', {
-      value: value
-    })
-      .then((response) => {
-        const { QRCodeURL } = response.data;
-        handleQRCodeUrl(QRCodeURL);
-      }).catch((err) => {
-        console.log(err)
+    setIsSendingRequest(true);
+    try {
+      const { data } = await api.post('/new', {
+        name: name,
+        value: value.length > 6 ? value.replaceAll(".", "").replace(",",".") : value.replace(",","."),
+        message: message
       })
+      handleQRCodeUrl(data.QRCodeURL);
+    } catch (error: any) {
+      console.log(error.message);
+    } finally {
+      setIsSendingRequest(false);
+    }
   }
 
   return (
@@ -90,7 +87,12 @@ function QRCodeForm({ handleQRCodeUrl }: Props) {
         <span className={style.observation}>O preenchimento do formulário é opcional</span>
       </div>
 
-      <Button>Gerar QRCode</Button>
+      <Button>
+        {isSendingRequest
+          ? <Loading />
+          : 'Gerar QRCode'
+        }
+      </Button>
     </form>
   )
 }

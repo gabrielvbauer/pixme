@@ -9,7 +9,17 @@
   background-color: $background-secondary;
 
   .qrcode {
+    width: 100%;
     height: 100%;
-    background-color: $background-tertiary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.25rem;
+  }
+
+  .qrcodeIcon {
+    width: 100%;
+    height: 100%;
+    color: $background-primary
   }
 }

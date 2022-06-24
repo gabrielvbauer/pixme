@@ -1,3 +1,5 @@
+import { QrCode } from 'phosphor-react'
+
 import style from './qrcode.module.scss';
 
 type Props = {
@@ -7,11 +9,18 @@ type Props = {
 function QRCode({ url }: Props) {
   return (
     <div className={style.container}>
-      <img 
-        src={url}
-        alt='QRCode'
-        className={style.qrcode}
-      />
+      {
+        url
+          ? <img 
+              src={url}
+              alt='QRCode'
+              className={style.qrcode}
+            />
+          : 
+            <QrCode 
+              className={style.qrcodeIcon}
+            />
+      }
     </div>
   )
 }

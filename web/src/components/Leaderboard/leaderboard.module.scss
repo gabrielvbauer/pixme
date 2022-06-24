@@ -1,9 +1,10 @@
 @import 'styles/theme.scss';
 
 .container {
+  width: 100%;
+  max-width: 480px;
   padding: 1.75rem;
   border-radius: 0.5rem;
-  max-width: 480px;
   background-color: $background-secondary;
 
   .header {

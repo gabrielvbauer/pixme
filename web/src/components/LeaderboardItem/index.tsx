@@ -1,24 +1,29 @@
-import { ChatCircleText } from 'phosphor-react';
+import { ChatCircleText, User } from 'phosphor-react';
+import { formatValue } from 'Utils/functions';
 
 import style from './leaderboarditem.module.scss';
 
 export type LeaderboardItemProps = {
-  userName: string;
-  picture: string;
+  name: string;
+  picture?: string;
   value: number;
   message?: string;
 }
 
-function LeaderboardItem({ userName, picture, value, message }: LeaderboardItemProps) {
+function LeaderboardItem({ name, picture, value, message }: LeaderboardItemProps) {
   return (
     <div className={style.container}>
-      <img 
+      {/* <img 
         src={picture}
         alt='Imagem de perfil'
         className={style.image}
+      /> */}
+      <User 
+        className={style.image}
+        color='#fff'
       />
       <p className={style.username}>
-        {userName}
+        {name}
       </p>
       {
         message ? (
@@ -39,10 +44,7 @@ function LeaderboardItem({ userName, picture, value, message }: LeaderboardItemP
       }
       <p className={style.value}>
         {
-          value.toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL' 
-          })
+          value ? ('R$ ' + formatValue(value.toString())) : '-'
         }
       </p>
     </div>

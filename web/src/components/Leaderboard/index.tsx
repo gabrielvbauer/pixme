@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { SortAscending, SortDescending } from 'phosphor-react';
 
-import { leaderboardMockData } from 'Mock/LeaderBoard';
 import { LeaderboardItem, LeaderboardItemProps } from 'components/LeaderboardItem';
 import style from './leaderboard.module.scss';
+import { api } from 'api/api';
 
 function Leaderboard() {
   const [sorting, setSorting] = useState<'asc' | 'desc'>('asc');
@@ -32,8 +32,18 @@ function Leaderboard() {
   }
 
   useEffect(() => {
-    setLeaderboardData(leaderboardMockData);
-  }, [leaderboardMockData]);
+    getLeaderboard();
+  }, [])
+
+  async function getLeaderboard() {
+    try {
+      const { data } = await api.get('/leaderboard');
+      console.log(data)
+      setLeaderboardData(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className={style.container}>
@@ -58,11 +68,10 @@ function Leaderboard() {
         }
       </div>
       {
-        leaderboardData.map(({userName, picture, value, message}, index) => {
+        leaderboardData.map(({name, value, message}, index) => {
           return (
             <LeaderboardItem 
-              userName={userName}
-              picture={picture}
+              name={name}
               value={value}
               message={message}
               key={index}
