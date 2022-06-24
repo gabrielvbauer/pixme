@@ -5,9 +5,9 @@ class GenerateQRCodeController {
   async handle(req: Request, res: Response) {
     const generateQRCodeService = new GenerateQRCodeService();
 
-    const { value } = req.body;
+    const { name, value, message } = req.body;
 
-    const QRCodeURL = await generateQRCodeService.execute(value);
+    const QRCodeURL = await generateQRCodeService.execute(name, value, message);
 
     return res.json({QRCodeURL})
   }  
