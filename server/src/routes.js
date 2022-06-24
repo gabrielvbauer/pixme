@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const GenerateQRCodeController_1 = require("../src/Controller/GenerateQRCodeController");
+const ListLeaderboardController_1 = require("./Controller/ListLeaderboardController");
+const generateQRCodeController = new GenerateQRCodeController_1.GenerateQRCodeController();
+const listLeaderboardController = new ListLeaderboardController_1.ListLeaderboardController();
+const router = (0, express_1.Router)();
+exports.router = router;
+router.post('/new', generateQRCodeController.handle);
+router.get('/leaderboard', listLeaderboardController.handle);
