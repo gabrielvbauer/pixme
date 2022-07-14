@@ -44,7 +44,7 @@ function LeaderboardItem({ name, picture, value, message }: LeaderboardItemProps
       }
       <p className={style.value}>
         {
-          value ? ('R$ ' + formatValue(value.toString())) : '-'
+          value ? ('R$ ' + formatValue(Number(value).toFixed(2).toString())) : '-'
         }
       </p>
     </div>
